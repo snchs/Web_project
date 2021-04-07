@@ -1,0 +1,575 @@
+*{
+	box-sizing: border-box;
+	text-decoration: none;
+	list-style: none;
+}
+
+body{
+
+	padding:0;
+	margin:0;
+	font-family: Gilroy,sans-serif;
+}
+
+#container {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.container {
+	margin: 0 auto;
+	width: 1200px;
+}
+
+.f2f2f2{
+	background #f2f2f2;
+}
+
+#header{
+	background:url(../img/fon.png) no-repeat center top / cover;
+	height: 100vh;
+	background-attachment: fixed;
+}
+
+/*Для перехода между секциями*/
+[id^=section] {
+	margin-bottom: 100%;
+}
+
+
+.logo{
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.heading{
+	background-color: white;
+	width: 100%;
+	height: 90px;
+	position: fixed;
+	z-index: 1;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.headingContent{
+	display: flex;
+	justify-content: space-between;
+	margin: 0 auto;
+	padding: 0 20px;
+	max-width: 1200px;
+}
+.heading__logo{
+	display: flex;
+}
+
+.heading__logo__ssika{
+	cursor: pointer;
+}
+
+.logotext{
+	font-weight: bold;
+	font-size: 60px;
+	padding-top: 15px;
+	line-height: 60px;
+	padding-bottom: 15px;
+}
+
+#minilogo{
+	position: relative;
+	right: 3px;
+	font-size: 10px;
+	font-weight: bold;
+	font-size: 20px;
+	padding-top: 50px;
+	line-height: 20px;
+}
+
+
+.headingContent li{
+	padding-top: 40px;
+	margin-right: 50px;
+}
+.headingContent ul{
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: space-around;
+}
+
+.headingContent a{
+	color:black;
+	text-decoration: none;
+	font-size:15px;
+	font-weight:800;
+	opacity: 1;
+	text-transform: uppercase;
+	transition: 0.3s;
+	font-family: Gilroy, sans-serif;
+	line-height: 1.2em;
+}
+
+.navstyle {
+	padding-left: 30px;
+}
+
+.navstyle a:hover{
+	color:black;
+	opacity: 0.5;
+}
+
+.heading__button{
+	background: #000000;
+	border-radius: 5px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	padding: 20px 14px;
+	/*cursor: pointer;*/
+}
+
+.heading__button a{
+	color:white;
+	opacity: 0.95;
+}
+
+.LOGIN:hover{
+	color:yellow;
+	opacity: 1;
+}
+
+.REGISTER:hover{
+	color:yellow;
+	opacity: 1;
+}
+
+/*.heading__button:hover > .LOGIN{
+	color:yellow;
+	opacity: 1;
+}
+
+.heading__button:hover > .REGISTER{
+	color:yellow;
+	opacity: 1;
+}*/
+
+.heading__button:hover{
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	transition: 0.3s;
+ }
+
+
+.title{
+	position: relative;
+	top: 40vh;
+	text-align: center;
+}
+
+.title h1{
+	margin:0;
+	padding:0;
+	font-size: 60px;
+	color:white;
+	font-weight: 800;
+}
+
+.title h3 {
+	margin: 0px;
+	position: 0px;
+	color: #fff;
+  font-size: 22px;
+  font-weight: 400;
+  margin-top: 20px;
+
+}
+
+hr{
+	width: 400px;
+	color:white;
+	border: 1.5px solid white;
+
+}
+
+.title h2{
+	margin:0;
+	padding:0;
+	font-size: 30px;
+	color:white;
+	font-weight: 400;
+}
+
+/*-----------------------------------*/
+
+.AboutProductStart{
+	background: #f2f2f2;
+	width: 100%;
+	padding-bottom: 30px;
+}
+
+
+
+.AboutProductStart h2{
+	margin: 0;
+	padding:0;
+	font-size: 40px;
+	font-weight: 600;
+	text-align: center;
+	padding-top: 100px;
+}
+
+.AboutProductStart p{
+	margin: 0;
+	padding:0;
+	font-size: 28px;
+	font-weight: 400;
+	text-align: center;
+
+	padding-top: 50px;
+	font-family: Gilroy, sans-serif;
+}
+
+#italicP{
+	font-weight: bold;
+	font-style: italic;
+}
+
+.AboutProductStart__icon{
+	margin-top: 50px;
+	text-align: center;
+	/*background: black;
+	border: 2px solid black;*/
+	border-radius: 5px;
+	max-width: 80%;
+}
+
+/*-----------------------------------*/
+
+.AboutProduct__title h2{
+	margin: 0;
+	padding:0;
+	font-size: 40px;
+	font-weight: 800;
+	text-align: center;
+	padding-top: 100px;
+}
+
+
+.Prod__item{
+	display: flex;
+	margin-bottom: 30px;
+}
+
+
+.Prod__item p{
+	margin: 0;
+	margin-right: 80px;
+	margin-left: 135px;
+	padding:0;
+	font-size: 28px;
+	font-weight: 400;
+	margin-top: 50px;
+	width: 670px;
+	text-align: justify;
+	align-items: center;
+}
+
+.image{
+	margin-top: 30px;
+
+	border: 5px solid black;
+	border-radius: 50%;
+}
+
+.services h3{
+	margin: 0;
+	padding:0;
+	font-size: 35px;
+	font-weight: 600;
+	text-align: center;
+	padding-top: 60px;
+}
+.services__list p{
+	line-height:1.2em;
+	margin: 0;
+	margin-right: 80px;
+	margin-left: 135px;
+	padding:0;
+	font-size: 28px;
+	font-weight: 400;
+	width: 670px;
+	/*text-align: justify;*/
+}
+
+.services__list{
+	display: flex;
+	align-items: center;
+	padding-top: 20px;
+}
+
+
+.installjpg1 {
+	margin-left: 100px;
+	margin-top: 5px;
+	border:5px solid black;
+	border-radius: 50%;
+}
+
+.installjpg2 {
+	margin-left: 100px;
+	margin-top: 15px;
+	border:5px solid black;
+	border-radius: 50%;
+}
+
+.installjpg3 {
+	margin-left: 100px;
+	margin-top: 10px;
+	border:5px solid black;
+	border-radius: 50%;
+}
+
+.installjpg4 {
+	margin-left: 100px;
+	margin-top: 10px;
+	border:5px solid black;
+	border-radius: 50%;
+}
+
+.installjpg5{
+	margin-left: 100px;
+	margin-top: 15px;
+	border:5px solid black;
+	border-radius: 50%;
+}
+
+.installjpg6 {
+	margin-left: 100px;
+	margin-top: 0px;
+	border:5px solid black;
+	border-radius: 50%;
+}
+
+.tarif__info{
+	margin:0;
+	padding:0;
+	margin-left: 350px;
+	font-size: 23px;
+	font-weight: 400;
+	position: relative;
+	bottom: 20px;
+}
+
+.start__button{
+	border: 5px solid black;
+	text-align: center;
+	background: #ffffff;
+	border-radius: 25px;
+	width: 400px;
+	margin: 0 auto;
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
+.start__button a{
+	font-size: 40px;
+	font-weight: 600;
+	padding:0;
+	padding:15px,15px,15px,15px;
+	color:#000000;
+}
+
+ /*---------------------------------*/
+
+#consumers{
+	background: #f2f2f2;
+}
+#consumers h2{
+	margin: 0;
+	padding:0;
+	font-size: 40px;
+	font-weight: 800;
+	text-align: center;
+	padding-top: 100px;
+}
+
+#consumers h3{
+	margin: 0;
+	padding:0;
+	font-size: 30px;
+	font-weight: 600;
+	text-align: center;
+	padding-top: 50px;
+}
+
+.eko__item1{
+	margin-top: 30px;
+}
+
+.eko__button1{
+	margin: 0 auto;
+	border: 3px solid black;
+	border-radius: 50px;
+	width: 80%;
+}
+
+.eko__button{
+	margin: 0 auto;
+	border: 3px solid black;
+	border-radius: 50px;
+	width: 80%;
+}
+
+.eko__button1 p{
+	margin: 0;
+	text-align: center;
+	font-size: 20px;
+	font-weight: 600px;
+	padding-top: 10px;
+	padding-bottom:10px;
+}
+.eko__button p{
+	margin: 0;
+	text-align: center;
+	font-size: 20px;
+	font-weight: 600px;
+	padding-top: 10px;
+	padding-bottom:10px;
+
+}
+
+.strelka{
+	margin-left: -webkit-calc(50% - 30px);
+}
+
+.zakon__text{
+	display: block;
+	text-align: justify;
+	font-size: 20px;
+	margin-left: 100px;
+	width: 650px;
+	color: #666666;
+	margin-top:0;
+	text-indent: 0px;
+	text-indent: 30px;
+}
+
+.zakon{
+	margin-top:100px;
+	display: flex;
+	padding-bottom: 10px;
+}
+
+.ssilka__zakon{
+	 color: #000000;
+	 font-weight: 800;
+	 transition: 0.3s;
+}
+
+.ssilka__zakon:hover{
+	opacity: 0.4;
+	border-bottom: 1px solid black;
+}
+
+/*-----------------------------------*/
+
+#ESK{
+	padding-bottom: 20px;
+}
+#ESK h2{
+	margin: 0;
+	padding:0;
+	font-size: 40px;
+	font-weight: 800;
+	text-align: center;
+	padding-top: 100px;
+}
+
+#ESK h3{
+	margin: 0;
+	padding:0;
+	font-size: 30px;
+	font-weight: 600;
+	text-align: center;
+	padding-top: 50px;
+}
+
+/*-------------------------------*/
+#footer{
+	color:white;
+	margin-top: 150px;
+	height: 200px;
+	width: 100%;
+	background-color: #393d44;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+
+}
+
+/*#footer h2{
+	margin: 0;
+	padding:0;
+	font-size: 30px;
+	font-weight: 800;
+	color:white;
+	padding-top: 20px;
+	text-align: center;
+}*/
+
+.footer__img{
+	float: right;
+	margin-right: 20px;
+	margin-bottom: 5px;
+
+
+}
+
+.logotext2{
+	font-weight: bold;
+	font-size: 40px;
+/*	padding-top: 15px;*/
+	/*line-height: 60px;*/
+	text-align: center;
+	color: #99d9ea;
+}
+
+.span{
+	/*position: relative;
+	right: 3px;*/
+	font-weight: bold;
+	font-size: 18px;
+/*	padding-top: 50px;*/
+	/*line-height: 20px;*/
+	color:white;
+}
+.OOO{
+	/*position: relative;
+	top: -30px;*/
+	text-align: center;
+ }
+
+.group{
+	align-items: center;
+	display: flex;
+/*	margin-left: 80%;*/
+}
+
+.group span{
+	color:#99d9ea;
+	font-size: 14px;
+}
+
+.group p{
+	color:white;
+	font-size: 14px;
+}
+
+.Partners{
+	display: flex;
+	/*position: relative;
+	top:55px;
+	right: 0px*/
+}
+
+.blocks{
+	margin-left: 30vh;
+	margin-right: 30vh;
+
+}

@@ -96,7 +96,7 @@ def login():
                                message="Неправильный логин или пароль",
                                form=form)
     # return template
-    return render_template('login.html', title='Авторизация', form=form)
+    return render_template('login.html', form=form)
 
 @app.route('/logout')
 @login_required

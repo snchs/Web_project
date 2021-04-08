@@ -10,7 +10,7 @@ body{
   position: relative;
   transition: 0.3s;
   right: -20px;
-  top: -158px;
+  top: -270px;
 }
 
 .strelka:hover{
@@ -19,7 +19,7 @@ body{
 }
 
 .form{
-  width: 300px;
+  width: 500px;
   padding:30px;
   border-radius: 10px;
   box-shadow: 0 4px 16px #ccc;
@@ -27,12 +27,11 @@ body{
   letter-spacing: 1px;
 }
 
-.form__input, 
+.form__input,
 .form__button1{
   font-family:  Gilroy, sans-serif;
   letter-spacing: 1px;
   font-size: 16px;
-
 }
 
 .form__title{
@@ -63,7 +62,6 @@ body{
   background-color: transparent;
   outline:none;
   transition: 0.3s;
-  font-weight:600;
 }
 
 .form__input:focus{

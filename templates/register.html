@@ -6,58 +6,63 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Регистрация</title>
+    <link rel="stylesheet" href="..\static\css\forma_reg.css">
 </head>
 <body>
-<h1>Регистрация</h1>
-<form action="" method="post">
+<a href="/" class="strelka"><img src="..\static\img\strelkaNazad.png" height="30px" title="Вернуться"></a>
+
+<form action="" method="post" class="form">
     {{ form.hidden_tag() }}
-    <p>
-        {{ form.email.label }}<br>
-        {{ form.email(class="form-control", type="email") }}<br>
+    <h1 class="form__title">Регистрация</h1>
+    <div class="form__group">
+        {{ form.email(class="form__input", type="email", placeholder=" ") }}
+        {{ form.email.label(class="form__label")}}
         {% for error in form.email.errors %}
-    <p class="alert alert-danger" role="alert">
-        {{ error }}
-    </p>
-    {% endfor %}
-    </p>
-    <p>
-        {{ form.password.label }}<br>
-        {{ form.password(class="form-control", type="password") }}<br>
+        <p class="alert alert-danger" role="alert">
+            {{ error }}
+        </p>
+        {% endfor %}
+    </div>
+
+
+    <div class="form__group">
+        {{ form.password(class="form__input", type="password", placeholder=" ") }}
+        {{ form.password.label(class="form__label")}}
         {% for error in form.password.errors %}
-    <p class="alert alert-danger" role="alert">
-        {{ error }}
-    </p>
-    {% endfor %}
-    </p>
-    <p>
-        {{ form.password_again.label }}<br>
-        {{ form.password_again(class="form-control", type="password") }}<br>
+        <p class="alert alert-danger" role="alert">
+            {{ error }}
+        </p>
+        {% endfor %}
+    </div>
+    <div class="form__group">
+        {{ form.password_again(class="form__input", type="password", placeholder=" ") }}
+        {{ form.password_again.label(class="form__label")}}
         {% for error in form.password_again.errors %}
-    <p class="alert alert-danger" role="alert">
-        {{ error }}
-    </p>
-    {% endfor %}
-    </p>
-    <p>
-        {{ form.name.label }}<br>
-        {{ form.name(class="form-control") }}<br>
+        <p class="alert alert-danger" role="alert">
+            {{ error }}
+        </p>
+        {% endfor %}
+    </div>
+    <div class="form__group">
+        {{ form.name(class="form__input", placeholder=" ") }}
+        {{ form.name.label(class="form__label")}}
         {% for error in form.name.errors %}
-    <p class="alert alert-danger" role="alert">
-        {{ error }}
-    </p>
-    {% endfor %}
-    </p>
-    <p>
-        {{ form.about.label }}<br>
-        {{ form.about(class="form-control") }}<br>
+        <p class="alert alert-danger" role="alert">
+            {{ error }}
+        </p>
+        {% endfor %}
+    </div>
+    <div class="form__group">
+        {{ form.about(class="form__input", placeholder=" ") }}
+        {{ form.about.label(class="form__label")}}
         {% for error in form.about.errors %}
-    <p class="alert alert-danger" role="alert">
-        {{ error }}
-    </p>
-    {% endfor %}
-    </p>
-    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
-    {{message}}
+        <p class="alert alert-danger" role="alert">
+            {{ error }}
+        </p>
+        {% endfor %}
+    </div>
+    {{ form.submit(type="submit", class="form__button1") }}
+    <div class="message">{{ message }}</div>
 </form>
 </body>
 </html>

@@ -130,14 +130,19 @@ body{
 	color:white;
 	opacity: 0.95;
 }
+.user__name{
+    margin-top:38px;
+
+}
+
 
 .LOGIN:hover{
-	color:yellow;
+	color:#FFA500;
 	opacity: 1;
 }
 
 .REGISTER:hover{
-	color:yellow;
+	color:#FFA500;
 	opacity: 1;
 }
 

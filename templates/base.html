@@ -1,270 +1,314 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<meta content=" " name="description">
-  <meta content=" " name="keywords">
-	<title>VPP - Виртуальная электростанция</title>
-	<link rel="stylesheet" href="..\static\css\style.css">
-	<link href="..\static\fonts\stylesheet.css" rel="stylesheet" type="text/css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content=" " name="description">
+    <meta content=" " name="keywords">
+    <title>VPP - Виртуальная электростанция</title>
+    <link rel="stylesheet" href="..\static\css\style.css">
+    <link href="..\static\fonts\stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 
 <body id="main">
 
-	<div id="header">
-		<div class="heading">
-				<div class="headingContent">
-					<a href="google.com" class="heading__logo__ssika">
-						<div class="heading__logo">
-							<a href="http://www.rosseti.ru/"><img src="..\static\img\logoN.png" alt="" width="70px" class="logo"></a>
+<div id="header">
+    <div class="heading">
+        <div class="headingContent">
+            <a href="google.com" class="heading__logo__ssika">
+                <div class="heading__logo">
+                    <a href="http://www.rosseti.ru/"><img src="..\static\img\logoN.png" alt="" width="70px"
+                                                          class="logo"></a>
 
-							<div class="logotext">VPP</div>
-							<div id="minilogo">iramida NRG</div>
-						</div>
-					</a>
+                    <div class="logotext">VPP</div>
+                    <div id="minilogo">iramida NRG</div>
+                </div>
+            </a>
 
-					<div class="nav navstyle">
+            <div class="nav navstyle">
 
-						<ul>
-							<li>
-								<a href="#header">Главная</a>
-							</li>
-							<li>
-								<a href="#AboutProduct">О продукте</a>
-							</li>
-							<li>
-								<a href="#consumers">Потребители</a>
-							</li>
-							<li>
-								<a href="#ESK">ЭСК</a>
-							</li>
-							<li>
-								<a href="#footer">О Нас</a>
-							</li>
-						</ul>
-					</div>
+                <ul>
+                    <li>
+                        <a href="#header">Главная</a>
+                    </li>
+                    <li>
+                        <a href="#AboutProduct">О продукте</a>
+                    </li>
+                    <li>
+                        <a href="#consumers">Потребители</a>
+                    </li>
+                    <li>
+                        <a href="#ESK">ЭСК</a>
+                    </li>
+                    <li>
+                        <a href="#footer">О Нас</a>
+                    </li>
+                </ul>
+            </div>
 
+            {% if current_user.is_authenticated %}
+            <a class="user__name" href="#">{{ current_user.name }}</a>
+            <div class="heading__button">
+                <a href="/logout" class="LOGIN">Выход</a>
+            </div>
 
-                        <a class="navbar-brand" href="/logout">{{ current_user.name }}</a>
-
-					<div class="heading__button">
-						<a href="/login" class="LOGIN">Вход</a>
-						<span style="font-weight: 700;color:#fff;">|</span>
-						<a href="/register" class="REGISTER">Регистрация</a>
-					</div>
-
-
-
-				</div>
-		</div>
-
-		<div class="title container">
-				<!--<h1>Мощная энергетика - современные технологии, новые возможности!</h1>-->
-				<h1>Новая ступень развития энергетики</h1>
-				<h3> Virtual Power Plant (VPP) — цифровое сообщество, объединяющее распределённую генерацию</h3>
-		</div>
+            {% else %}
+            <div class="heading__button">
+                <a href="/login" class="LOGIN">Вход</a>
+                <span style="font-weight: 700;color:#fff;">|</span>
+                <a href="/register" class="REGISTER">Регистрация</a>
+            </div>
+            {% endif %}
 
 
-	</div>
+        </div>
+    </div>
 
-	<!-- Кнопка вверх -->
-	<!-- <a href="#main" class="up-scroll"></a> -->
-
-	<div class="AboutProductStart">
-		<div class="container">
-			<!-- <div class="container"> -->
-				<div class="AboutProductStart__title">
-					<h2>Что такое виртуальная электростанция?</h2>
-					<p><span id="italicP">VPP(Virtual Power Plant)</span> — это сеть генераторов и накопителей, которая максимизирует выгоду от возобновляемых источников электроэнергии. Наше решение объединяет все ресурсы генерации и позволят обеспечивать потребление участников платформы, рационально и получать прибыль от продажи излишков на розничном или оптовом рынке.
-						<br>
-						<img src="..\static\img\vppimage2.jpg" alt="" class="AboutProductStart__icon"></p>
-				</div>
-			<!-- </div> -->
-		</div>
-	</div>
-
-	<div id="AboutProduct">
-		<div class="container">
-			<div class="AboutProduct__title">
-				<h2>О продукте</h2>
-				<div class="Prod__item">
-					<p><img src="..\static\img\iconEL.png" alt="" height="30" width="30">VPPiramida NRG делает переход на зеленую энергетику доступным и выгодным</p>
-					<img class="image" src="..\static\img\ekoN.png" alt="" width="100" height="100">
-				</div>
-				<div class="Prod__item">
-					<p><img src="..\static\img\iconEL.png" alt="" height="30px">Проверенный подход к управлению ресурсами генерации</p>
-					<img class="image" src="..\static\img\nadezh.png" alt="" width="100" height="100">
-				</div>
-				<div class="Prod__item">
-					<p><img src="..\static\img\iconEL.png" alt="" height="30px">Прогнозирование аварий, вызванные погодными условиями</p>
-					<img class="image" src="..\static\img\weatherN.png" alt="" width="100" height="100">
-				</div>
-				<div class="Prod__item">
-					<p><img src="..\static\img\iconEL.png" height="30px" alt="">Новый подход к снижению счета за электричество</p>
-					<img class="image" src="..\static\img\rubl.png" alt="" width="100" height="100">
-				</div>
-			</div>
-			<div class="services">
-				<h3>Наши услуги</h3>
-				<ul>
-					<li class="services__list"><img src="..\static\img\prognoz.png" alt="" class="installjpg1" height="100" width="100"><p><b>1. &nbsp</b>Прогнозирование потребления и генерации</p></li>
-					<li class="services__list"><img src="..\static\img\rukaN.png" alt="" class="installjpg2" height="100" width="100"><p><b>2. &nbsp</b>Разработка оптимальной стратегии поведения на платформе для любых участников</p></li>
-					<li class="services__list"><img src="..\static\img\kachN.png" alt="" class="installjpg3" height="100" width="100"><p><b>3. &nbsp</b>Регулирование качества потребляемой электроэнергии</p></li>
-					<li class="services__list"><img src="..\static\img\veter.png" alt="" class="installjpg4" height="100" width="100"><p><b>4. &nbsp</b>Регулирование источника потребляемой электроэнергии</p></li>
-					<li class="services__list"><img src="..\static\img\battery.png" alt="" class="installjpg5" height="100" width="100"><p><b>5. &nbsp</b>Гарантия предоставления постоянного объема электроэнергии</p></li>
-					<li class="services__list"><img src="..\static\img\uslugiN.png" alt="" class="installjpg6" height="100" width="100"><p><b>6. &nbsp</b>Введение тарифных планов</p></li>
-				</ul>
-				<div class="start__button">
-					<a href="register.html" class="start__button_a">Подключиться сейчас</a>
-				</div>
-			</div>
-		</div>
-
-	<div id="consumers">
-		<div class="container">
-			<div class="consumers__title">
-				<h2>Потребители</h2>
-				<h3>Экономическая выгода</h3>
-				<div class="eko__item1">
-					 <div class="eko__button1"><p> продажа излишков генерации на оптовом или внутреннем рынке</p></div>
-				</div>
-				<img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
-
-				<div class="eko__item">
-					 <div class="eko__button"><p> гибкие тарифные планы в зависимости от выбора потребления, ниже чем у других поставщиков</p></div>
-				</div>
-				<img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
-
-				<div class="eko__item">
-					 <div class="eko__button"><p>понижение стоимости электроэнергии в пиковые часы за счет ресурсов генерации и накопления</p></div>
-				</div>
-				<img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
-
-				<div class="eko__item">
-					 <div class="eko__button"><p>доступная ежемесячная информация о расходах и прибыли, включая цены и объемы поставок</p></div>
-				</div>
-				<img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
-
-				<div class="eko__item">
-					 <div class="eko__button"><p>регулирование качества и источника электроэнергии</p></div>
-				</div>
-				<img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
-
-				<div class="eko__item">
-					 <div class="eko__button"><p>возможность ограничить ценовой диапазон</p></div>
-				</div>
-				<img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
-
-				<div class="eko__item">
-					 <div class="eko__button"><p>легкий доступ к недорогой зеленой электроэнергии</p></div>
-				</div>
-				<li class="zakon"><img src="..\static\img\zakonN.png" alt="" class="installjpg1" height="100px" width="100px"><p class="zakon__text"> Президент Российской Федерации Владимир Путин подписал <a href="https://rg.ru/2019/12/30/energetika-dok.html" class="ssilka__zakon">Федеральный закон от 27.12.2019 N 471-ФЗ "О внесении изменений в Федеральный закон "Об электроэнергетике" в части развития микрогенерации".</a> С принятием этого закона потребители, установившие у себя объект микрогенерации (например, солнечную панель), выдающий во внешнюю сеть максимальную мощность не более 15 кВт, смогут продавать гарантирующим поставщикам и иным энергосбытовым компаниям непотребленные на собственные нужды излишки электроэнергии, полученные от микрогенерации. Гарантирующие поставщики, в свою очередь, будут обязаны такие излишки покупать по средневзвешенной цене оптового рынка. Чтобы воспользоваться правом продажи электроэнергии, необходимо технически присоединить объект микрогенерации к местным сетям, а также заключить договор купли-продажи с гарантирующим поставщиком, в зоне покрытия которого находится мини-станция.</p></li>
-			</div>
-		</div>
-
-		<!-- </div> -->
-	</div>
-	<div id="ESK">
-		<div class="container">
-			<div class="ESK__title">
-				<h2>Энергосбытовая компания</h2>
-				<h3>Экономическая выгода</h3>
-				<div class="eko__item1">
-					 <div class="eko__button1"><p> 10-20% от продажи излишков генерации на оптовом рынке</p></div>
-				</div>
-				<img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
-
-				<div class="eko__item">
-					 <div class="eko__button"><p> 5-10% от объема продаж на внутреннем рынке платформы</p></div>
-				</div>
-				<img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
-
-				<div class="eko__item">
-					 <div class="eko__button"><p>широкий диапазон новых прибыльных тарифных планов</p></div>
-				</div>
-				<img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
-
-				<div class="eko__item">
-					 <div class="eko__button"><p> экономия от устранения необходимости создания новых сетей с большой нагрузкой</p></div>
-				</div>
-				<img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
-
-				<div class="eko__item">
-					 <div class="eko__button"><p>прибыль от оказания услуг прогнозирования и выбора оптимальной стратегии поведения каждого участника</p></div>
-				</div>
-				<img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
-
-				<div class="eko__item">
-					 <div class="eko__button"><p>привлечение и сохранение клиентов за счет выгодных ценовых тарифов и зеленой энергетики</p></div>
-				</div>
-				<img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
-
-				<div class="eko__item">
-					 <div class="eko__button"><p>экономия электроэнергии за счет четких данных об ее использовании</p></div>
-				</div>
-				<img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
+    <div class="title container">
+        <!--<h1>Мощная энергетика - современные технологии, новые возможности!</h1>-->
+        <h1>Новая ступень развития энергетики</h1>
+        <h3> Virtual Power Plant (VPP) — цифровое сообщество, объединяющее распределённую генерацию</h3>
+    </div>
 
 
-				<div class="eko__item">
-					 <div class="eko__button"><p> прозрачность и доступная аналитика</p></div>
-				</div>
-				<img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
+</div>
 
-				<div class="eko__item">
-					 <div class="eko__button"><p> понимание и контроль интересов потребителей</p></div>
-				</div>
-				<img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
+<!-- Кнопка вверх -->
+<!-- <a href="#main" class="up-scroll"></a> -->
 
-				<div class="eko__item">
-					 <div class="eko__button"><p>тестировочная площадка для новых технологий и ценовых режимов</p></div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<footer id="footer">
-			<div class="Partners">
-				<img src="..\static\img\logo__footerN.png" alt="" height="100px">
-				<img src="https://center-orlyonok.ru/Content/images/eaglet-logo.svg" alt="" height="110px" class="Orel">
-			</div>
-			<div class="blocks">
-				<div class="logotext2">VPP<span class="span">iramida NRG</span></div>
-				<p class="OOO">© 2020, АО «Piramida NRG»</p>
-			</div>
+<div class="AboutProductStart">
+    <div class="container">
+        <!-- <div class="container"> -->
+        <div class="AboutProductStart__title">
+            <h2>Что такое виртуальная электростанция?</h2>
+            <p><span id="italicP">VPP(Virtual Power Plant)</span> — это сеть генераторов и накопителей, которая
+                максимизирует выгоду от возобновляемых источников электроэнергии. Наше решение объединяет все ресурсы
+                генерации и позволят обеспечивать потребление участников платформы, рационально и получать прибыль от
+                продажи излишков на розничном или оптовом рынке.
+                <br>
+                <img src="..\static\img\vppimage2.jpg" alt="" class="AboutProductStart__icon"></p>
+        </div>
+        <!-- </div> -->
+    </div>
+</div>
 
-			<div class="bottom__group">
-				<div class="group">
-					<img src="https://image.flaticon.com/icons/svg/739/739158.svg" height="30px" alt="" class="footer__img">
-					<p><span>@Aleksandr_Zhd</span> Александр (Верстальщик)</p>
-				</div>
-				<div class="group">
-					<img src="https://image.flaticon.com/icons/svg/739/739158.svg" height="30px" alt="" class="footer__img">
-					<p><span>@ArinaVladi</span> Арина (Руководитель)</p>
-				</div>
-			</div>
-	</footer>
+<div id="AboutProduct">
+    <div class="container">
+        <div class="AboutProduct__title">
+            <h2>О продукте</h2>
+            <div class="Prod__item">
+                <p><img src="..\static\img\iconEL.png" alt="" height="30" width="30">VPPiramida NRG делает переход на
+                    зеленую энергетику доступным и выгодным</p>
+                <img class="image" src="..\static\img\ekoN.png" alt="" width="100" height="100">
+            </div>
+            <div class="Prod__item">
+                <p><img src="..\static\img\iconEL.png" alt="" height="30px">Проверенный подход к управлению ресурсами
+                    генерации</p>
+                <img class="image" src="..\static\img\nadezh.png" alt="" width="100" height="100">
+            </div>
+            <div class="Prod__item">
+                <p><img src="..\static\img\iconEL.png" alt="" height="30px">Прогнозирование аварий, вызванные погодными
+                    условиями</p>
+                <img class="image" src="..\static\img\weatherN.png" alt="" width="100" height="100">
+            </div>
+            <div class="Prod__item">
+                <p><img src="..\static\img\iconEL.png" height="30px" alt="">Новый подход к снижению счета за
+                    электричество</p>
+                <img class="image" src="..\static\img\rubl.png" alt="" width="100" height="100">
+            </div>
+        </div>
+        <div class="services">
+            <h3>Наши услуги</h3>
+            <ul>
+                <li class="services__list"><img src="..\static\img\prognoz.png" alt="" class="installjpg1" height="100"
+                                                width="100">
+                    <p><b>1. &nbsp</b>Прогнозирование потребления и генерации</p></li>
+                <li class="services__list"><img src="..\static\img\rukaN.png" alt="" class="installjpg2" height="100"
+                                                width="100">
+                    <p><b>2. &nbsp</b>Разработка оптимальной стратегии поведения на платформе для любых участников</p>
+                </li>
+                <li class="services__list"><img src="..\static\img\kachN.png" alt="" class="installjpg3" height="100"
+                                                width="100">
+                    <p><b>3. &nbsp</b>Регулирование качества потребляемой электроэнергии</p></li>
+                <li class="services__list"><img src="..\static\img\veter.png" alt="" class="installjpg4" height="100"
+                                                width="100">
+                    <p><b>4. &nbsp</b>Регулирование источника потребляемой электроэнергии</p></li>
+                <li class="services__list"><img src="..\static\img\battery.png" alt="" class="installjpg5" height="100"
+                                                width="100">
+                    <p><b>5. &nbsp</b>Гарантия предоставления постоянного объема электроэнергии</p></li>
+                <li class="services__list"><img src="..\static\img\uslugiN.png" alt="" class="installjpg6" height="100"
+                                                width="100">
+                    <p><b>6. &nbsp</b>Введение тарифных планов</p></li>
+            </ul>
+            <div class="start__button">
+                <a href="/register" class="start__button_a">Подключиться сейчас</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="consumers">
+        <div class="container">
+            <div class="consumers__title">
+                <h2>Потребители</h2>
+                <h3>Экономическая выгода</h3>
+                <div class="eko__item1">
+                    <div class="eko__button1"><p> продажа излишков генерации на оптовом или внутреннем рынке</p></div>
+                </div>
+                <img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
+
+                <div class="eko__item">
+                    <div class="eko__button"><p> гибкие тарифные планы в зависимости от выбора потребления, ниже чем у
+                        других поставщиков</p></div>
+                </div>
+                <img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
+
+                <div class="eko__item">
+                    <div class="eko__button"><p>понижение стоимости электроэнергии в пиковые часы за счет ресурсов
+                        генерации и накопления</p></div>
+                </div>
+                <img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
+
+                <div class="eko__item">
+                    <div class="eko__button"><p>доступная ежемесячная информация о расходах и прибыли, включая цены и
+                        объемы поставок</p></div>
+                </div>
+                <img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
+
+                <div class="eko__item">
+                    <div class="eko__button"><p>регулирование качества и источника электроэнергии</p></div>
+                </div>
+                <img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
+
+                <div class="eko__item">
+                    <div class="eko__button"><p>возможность ограничить ценовой диапазон</p></div>
+                </div>
+                <img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
+
+                <div class="eko__item">
+                    <div class="eko__button"><p>легкий доступ к недорогой зеленой электроэнергии</p></div>
+                </div>
+                <li class="zakon"><img src="..\static\img\zakonN.png" alt="" class="installjpg1" height="100px"
+                                       width="100px">
+                    <p class="zakon__text"> Президент Российской Федерации Владимир Путин подписал <a
+                            href="https://rg.ru/2019/12/30/energetika-dok.html" class="ssilka__zakon">Федеральный закон
+                        от 27.12.2019 N 471-ФЗ "О внесении изменений в Федеральный закон "Об электроэнергетике" в части
+                        развития микрогенерации".</a> С принятием этого закона потребители, установившие у себя объект
+                        микрогенерации (например, солнечную панель), выдающий во внешнюю сеть максимальную мощность не
+                        более 15 кВт, смогут продавать гарантирующим поставщикам и иным энергосбытовым компаниям
+                        непотребленные на собственные нужды излишки электроэнергии, полученные от микрогенерации.
+                        Гарантирующие поставщики, в свою очередь, будут обязаны такие излишки покупать по
+                        средневзвешенной цене оптового рынка. Чтобы воспользоваться правом продажи электроэнергии,
+                        необходимо технически присоединить объект микрогенерации к местным сетям, а также заключить
+                        договор купли-продажи с гарантирующим поставщиком, в зоне покрытия которого находится
+                        мини-станция.</p></li>
+            </div>
+        </div>
+
+        <!-- </div> -->
+    </div>
+    <div id="ESK">
+        <div class="container">
+            <div class="ESK__title">
+                <h2>Энергосбытовая компания</h2>
+                <h3>Экономическая выгода</h3>
+                <div class="eko__item1">
+                    <div class="eko__button1"><p> 10-20% от продажи излишков генерации на оптовом рынке</p></div>
+                </div>
+                <img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
+
+                <div class="eko__item">
+                    <div class="eko__button"><p> 5-10% от объема продаж на внутреннем рынке платформы</p></div>
+                </div>
+                <img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
+
+                <div class="eko__item">
+                    <div class="eko__button"><p>широкий диапазон новых прибыльных тарифных планов</p></div>
+                </div>
+                <img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
+
+                <div class="eko__item">
+                    <div class="eko__button"><p> экономия от устранения необходимости создания новых сетей с большой
+                        нагрузкой</p></div>
+                </div>
+                <img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
+
+                <div class="eko__item">
+                    <div class="eko__button"><p>прибыль от оказания услуг прогнозирования и выбора оптимальной стратегии
+                        поведения каждого участника</p></div>
+                </div>
+                <img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
+
+                <div class="eko__item">
+                    <div class="eko__button"><p>привлечение и сохранение клиентов за счет выгодных ценовых тарифов и
+                        зеленой энергетики</p></div>
+                </div>
+                <img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
+
+                <div class="eko__item">
+                    <div class="eko__button"><p>экономия электроэнергии за счет четких данных об ее использовании</p>
+                    </div>
+                </div>
+                <img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
 
 
-<script type="text/javascript" src="..\static\js\jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
-<script type="text/javascript" src="..\static\js\anchor.js"></script>
-<script type="text/javascript" src="..\static\js\anchor.init.js"></script>
+                <div class="eko__item">
+                    <div class="eko__button"><p> прозрачность и доступная аналитика</p></div>
+                </div>
+                <img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
+
+                <div class="eko__item">
+                    <div class="eko__button"><p> понимание и контроль интересов потребителей</p></div>
+                </div>
+                <img src="..\static\img\strelka.png" alt="" height="60px" class="strelka">
+
+                <div class="eko__item">
+                    <div class="eko__button"><p>тестировочная площадка для новых технологий и ценовых режимов</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+        <div class="Partners">
+            <img src="..\static\img\logo__footerN.png" alt="" height="100px">
+            <img src="https://center-orlyonok.ru/Content/images/eaglet-logo.svg" alt="" height="110px" class="Orel">
+        </div>
+        <div class="blocks">
+            <div class="logotext2">VPP<span class="span">iramida NRG</span></div>
+            <p class="OOO">© 2020-2021, АО «Piramida NRG»</p>
+        </div>
+
+        <div class="bottom__group">
+            <div class="group">
+                <img src="https://image.flaticon.com/icons/svg/739/739158.svg" height="30px" alt="" class="footer__img">
+                <p><span>@Aleksandr_Zhd</span> Александр (Верстальщик)</p>
+            </div>
+            <div class="group">
+                <img src="https://image.flaticon.com/icons/svg/739/739158.svg" height="30px" alt="" class="footer__img">
+                <p><span>@ArinaVladi</span> Арина (Руководитель)</p>
+            </div>
+        </div>
+    </footer>
 
 
-<script type="text/javascript">
+    <script type="text/javascript" src="..\static\js\jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="..\static\js\anchor.js"></script>
+    <script type="text/javascript" src="..\static\js\anchor.init.js"></script>
+
+
+    <script type="text/javascript">
   $(document).ready(function() {
     $(document).on('click', '.modal_btn', function(){
       $('#small-modal').arcticmodal();
     });
   });
-</script>
 
 
+    </script>
 
 
-<script type="text/javascript">
+    <script type="text/javascript">
 	 $(document).ready(function(){
 	 $(".heading").hover(function() {
 	 $(this).stop().animate({ backgroundColor: "##f2f2f2"}, 400);
@@ -288,7 +332,10 @@
        transitionDuration : 1200
    });
 });
-</script>
 
-</div></body>
+
+    </script>
+
+</div>
+</body>
 </html>

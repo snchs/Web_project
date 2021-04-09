@@ -53,9 +53,9 @@
         {% endfor %}
     </div>
     <div class="form__group">
-        {{ form.about(class="form__input", placeholder=" ") }}
-        {{ form.about.label(class="form__label")}}
-        {% for error in form.about.errors %}
+        {{ form.status.label(class="form_label_status")}}
+        {{ form.status(class="form__input", placeholder=" ") }}
+        {% for error in form.status.errors %}
         <p class="alert alert-danger" role="alert">
             {{ error }}
         </p>

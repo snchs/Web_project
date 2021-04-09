@@ -10,7 +10,6 @@ from data.users import User
 from forms.register_form import RegisterForm
 from forms.login_form import LoginForm
 
-
 # extra modules
 import datetime
 
@@ -24,7 +23,6 @@ app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 # login manager init
 login_manager = LoginManager()
 login_manager.init_app(app)
-
 
 
 @login_manager.user_loader
@@ -64,13 +62,13 @@ def reqister():
         user = User(
             name=form.name.data,
             email=form.email.data,
-            about=form.about.data
+            status=form.status.data
         )
 
         user.set_password(form.password.data)
         db_sess.add(user)
         db_sess.commit()
-        return redirect('/login')
+        return redirect('/lk')
     return render_template('register.html', title='Регистрация', form=form)
 
 
@@ -89,7 +87,7 @@ def login():
         if user and user.check_password(form.password.data):
             login_user(user, remember=form.remember_me.data)
             # go home
-            return redirect("/")
+            return redirect("/lk")
 
         # user error
         return render_template('login.html',
@@ -98,6 +96,14 @@ def login():
     # return template
     return render_template('login.html', form=form)
 
+
+# login page
+@app.route('/lk', methods=['GET', 'POST'])
+def lk():
+    # return template
+    return render_template('lk.html')
+
+
 @app.route('/logout')
 @login_required
 def logout():
@@ -105,12 +111,11 @@ def logout():
     return redirect("/")
 
 
-
 def main():
     # initilize database
     db_session.global_init("db/blogs.db")
 
-    app.run(port=8080, host='127.0.0.1')
+    app.run(port=8080, host='127.0.0.1', debug=True)
 
 
 if __name__ == '__main__':

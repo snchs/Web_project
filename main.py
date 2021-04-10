@@ -1,7 +1,11 @@
 # flask framework
 from flask import Flask, render_template, request, make_response, session, redirect, abort
 from flask_login import LoginManager, login_user, login_required, current_user, logout_user
-
+# email send
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from platform import python_version
 # models
 from data import db_session
 from data.users import User
@@ -70,11 +74,43 @@ def reqister():
             status=form.status.data
         )
 
+        email_send(User.email)
+
         user.set_password(form.password.data)
         db_sess.add(user)
         db_sess.commit()
+
         return redirect('/login')
     return render_template('register.html', title='Регистрация', form=form)
+
+
+def email_send(email_to):
+    # --- email send
+    server = 'smtp.mail.ru'
+    user = 'snchs_web1@mail.ru'
+    password = '29032004sasha'
+
+    recipients = [email_to]
+    sender = 'snchs_web1@mail.ru'
+    subject = 'VPP - Рассылка сообщений'
+    text = f'Добро пожаловать, теперь вы часть платформы VPP!!!'
+
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = subject
+    msg['From'] = 'Python script <'+sender+'>'
+    msg['To'] = recipients
+    msg['Reply-To'] = sender
+    msg['Return-Path'] = sender
+    msg['X-Mailer'] = 'Python/'+(python_version())
+
+    part_text = MIMEText(text, 'plain')
+
+    msg.attach(part_text)
+
+    mail = smtplib.SMTP_SSL(server)
+    mail.login(user, password)
+    mail.sendmail(sender, recipients, msg)
+    mail.quit()
 
 
 # login page

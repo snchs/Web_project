@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content=" " name="description">
+    <meta content=" " name="keywords">
+    <title>Личный кабинет</title>
+    <link rel="stylesheet" href="..\static\css\sotrudnik.css">
+    <link href="..\static\fonts\stylesheet.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+<div id="header">
+    <div class="heading">
+        <div class="headingContent">
+            <a href="google.com" class="heading__logo__ssika">
+                <div class="heading__logo">
+                    <a href="http://www.rosseti.ru/"><img src="..\static\img\logoN.png" alt="" width="70px"
+                                                          class="logo"></a>
+
+                    <div class="logotext">VPP</div>
+                    <div id="minilogo">iramida NRG</div>
+                </div>
+            </a>
+
+            <div class="nav navstyle">
+
+                <ul>
+                    <li>
+                        <a href="#header">Личный кабинет</a>
+                    </li>
+                    <li>
+                        <a href="#AboutProduct">О продукте</a>
+                    </li>
+                    <li>
+                        <a href="#consumers">Потребители</a>
+                    </li>
+                    <li>
+                        <a href="#ESK">ЭСК</a>
+                    </li>
+                    <li>
+                        <a href="#footer">О Нас</a>
+                    </li>
+                </ul>
+            </div>
+
+            <a class="user__name" href="/">{{ current_user.name }}</a>
+            <div class="heading__button">
+                <a href="/logout" class="LOGIN">Выход</a>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="title container">
+        <!--<h1>Мощная энергетика - современные технологии, новые возможности!</h1>-->
+        <h1>Добро пожаловать в Личный Кабинет, Сотрудник!</h1>
+        <h3>VPPiramida NRG заботить о вас</h3>
+    </div>
+</div>
+</body>
+</html>

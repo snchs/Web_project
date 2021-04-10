@@ -68,7 +68,7 @@ def reqister():
         user.set_password(form.password.data)
         db_sess.add(user)
         db_sess.commit()
-        return redirect('/lk')
+        return redirect('/sotrudnik')
     return render_template('register.html', title='Регистрация', form=form)
 
 
@@ -82,13 +82,19 @@ def login():
     if form.validate_on_submit():
         db_sess = db_session.create_session()
         # user search
-        user = db_sess.query(User).filter(User.email == form.email.data).first()
-        # check password
-        if user and user.check_password(form.password.data):
-            login_user(user, remember=form.remember_me.data)
-            # go home
-            return redirect("/lk")
 
+        sotrudnik = db_sess.query(User).filter(User.email == form.email.data, User.status == 'Сотрудник').first()
+        potreb = db_sess.query(User).filter(User.email == form.email.data, User.status == 'Потребитель').first()
+        # check password
+        if sotrudnik and sotrudnik.check_password(form.password.data):
+            login_user(sotrudnik, remember=form.remember_me.data)
+            # go home
+            return redirect("/sotrudnik")
+
+        if potreb and potreb.check_password(form.password.data):
+            login_user(potreb, remember=form.remember_me.data)
+            # go home
+            return redirect("/potreb")
         # user error
         return render_template('login.html',
                                message="Неправильный логин или пароль",
@@ -97,11 +103,18 @@ def login():
     return render_template('login.html', form=form)
 
 
-# login page
-@app.route('/lk', methods=['GET', 'POST'])
-def lk():
+# personal account
+@app.route('/sotrudnik', methods=['GET', 'POST'])
+def sotrudnik():
     # return template
-    return render_template('lk.html')
+    return render_template('sotrudnik.html')
+
+
+# personal account
+@app.route('/potreb', methods=['GET', 'POST'])
+def potreb():
+    # return template
+    return render_template('potreb.html')
 
 
 @app.route('/logout')

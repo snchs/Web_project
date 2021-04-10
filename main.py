@@ -34,8 +34,13 @@ def load_user(user_id):
 # home page
 @app.route("/")
 def index():
-    db_sess = db_session.create_session()
+    dict_status_user = {'Сотрудник':'/sotrudnik',
+                        'Потребитель':'/potreb'}
+    if current_user.is_authenticated:
+        return render_template("base.html", status_page=dict_status_user[current_user.status])
     return render_template("base.html")
+
+
 
 
 # register page
@@ -68,7 +73,7 @@ def reqister():
         user.set_password(form.password.data)
         db_sess.add(user)
         db_sess.commit()
-        return redirect('/sotrudnik')
+        return redirect('/login')
     return render_template('register.html', title='Регистрация', form=form)
 
 

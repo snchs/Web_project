@@ -137,24 +137,15 @@ body{
 
 
 .LOGIN:hover{
-	color:#FFA500;
+	color:#00BFFF;
 	opacity: 1;
 }
 
 .REGISTER:hover{
-	color:#FFA500;
+	color:#00BFFF;
 	opacity: 1;
 }
 
-/*.heading__button:hover > .LOGIN{
-	color:yellow;
-	opacity: 1;
-}
-
-.heading__button:hover > .REGISTER{
-	color:yellow;
-	opacity: 1;
-}*/
 
 .heading__button:hover{
 	box-shadow: 0 0 10px rgba(0,0,0,0.5);

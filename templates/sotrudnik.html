@@ -8,9 +8,16 @@
     <meta content=" " name="description">
     <meta content=" " name="keywords">
     <title>Личный кабинет</title>
-    <link rel="stylesheet" href="..\static\css\sotrudnik.css">
     <link href="..\static\fonts\stylesheet.css" rel="stylesheet" type="text/css">
+    <!--    для графика-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link type="text/css" rel="StyleSheet" href="https://bootstraptema.ru/plugins/2016/shieldui/style.css"/>
+    <script src="https://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
+    <script src="https://bootstraptema.ru/plugins/2016/shieldui/script.js"></script>
 
+
+    <!--    подключение стилей-->
+    <link rel="stylesheet" href="..\static\css\sotrudnik.css">
 </head>
 <body>
 <div id="header">
@@ -30,19 +37,7 @@
 
                 <ul>
                     <li>
-                        <a href="#header">Личный кабинет</a>
-                    </li>
-                    <li>
-                        <a href="#AboutProduct">О продукте</a>
-                    </li>
-                    <li>
-                        <a href="#consumers">Потребители</a>
-                    </li>
-                    <li>
-                        <a href="#ESK">ЭСК</a>
-                    </li>
-                    <li>
-                        <a href="#footer">О Нас</a>
+                        <a href="#footer">Сотрудник ЭСК</a>
                     </li>
                 </ul>
             </div>
@@ -66,26 +61,59 @@
 <div class="Panel-sotrudnika">
     <div class="container">
         <h2 class="title-panel-sotrudnika">Панель сотрудника</h2>
-        <div class="button1">
-			<p  class="button_p">Cхема платформы</p>
-		</div>
-		<div class="button">
-			<p  class="button_p">Количество участников</p>
-		</div>
-		<div class="button">
-			<p  class="button_p">Объем электроэнегрии, вышедшей на ОРЭМ за сутки</p>
-		</div>
-		<div class="button">
-			<p  class="button_p">Объем торгов на локальном рынке</p>
-		</div>
-		<div class="button">
-			<p  class="button_p">Заявки (на установку оборудования, расчет стратегии, прогнозирование)</p>
-		</div>
-		<div class="button2">
-			<p  class="button_p">График цены электроэнергии на рынке</p>
-		</div>
+        <div class="buttons_with_content">
+            <button class="button_1" id="btn_scheme_vpp">
+                <p class="button_p">Схема платформы</p>
+            </button>
+            <br>
+            <button class="button_1" id="btn_count_users">
+                <p class="button_p">Количество участников</p>
+            </button>
+            <br>
+            <button class="button_1">
+                <p class="button_p">Заявки (на установку оборудования, расчет стратегии, прогнозирование)</p>
+            </button>
+            <br>
+            <button class="button_1" id="btn_electricity_prices">
+                <p class="button_p">График цены электроэнергии на рынке</p>
+            </button>
+            <!--схема-->
+            <div class="scheme_vpp">
+                <img src="../static/img/scheme_vpp.png" alt="scheme_vpp" height="350px">
+            </div>
+            <!--кол-во участников-->
+            <div class="count_users">
+                <p>Сотрудников: {{len_sotrudnik}}</p>
+                <p>Потребителей: {{len_potreb}}</p>
+            </div>
+
+            <!--график-->
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div id="chart"></div>
+                    <script src="../static/js/graph.js"></script>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
+<footer id="footer">
+    <div class="Partners">
+        <img src="..\static\img\logo__footerN.png" alt="" height="100px">
+        <img src="https://center-orlyonok.ru/Content/images/eaglet-logo.svg" alt="" height="110px" class="Orel">
+    </div>
+    <div class="blocks">
+        <div class="logotext2">VPP<span class="span">iramida NRG</span></div>
+        <p class="OOO">© 2020-2021, АО «Piramida NRG»</p>
+    </div>
 
+    <div class="bottom__group">
+        <div class="group">
+            <img src="https://image.flaticon.com/icons/svg/739/739158.svg" height="30px" alt="" class="footer__img">
+            <p><span>@Aleksandr_Zhd</span> Александр (Верстальщик)</p>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

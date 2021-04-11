@@ -77,6 +77,7 @@ body{
 }
 
 .form__button1{
+  margin-left:30%;
   font-weight: 600;
   padding:10px 10px;
   border: 2px solid black;
@@ -91,6 +92,7 @@ body{
 .remember{
   margin-left:50px;
 }
+
 .message{
   margin-top:15px;
   font-weight:bold;
@@ -109,30 +111,6 @@ body{
   top:-18px;
   font-size: 12px;
   color:#e0e0e0;
-}
-
-.form__button2{
-  margin-left: 20px;
-  background-color: white;
-  color:black;
-  border: 2px solid black;
-  transition: 0.3s;
-}
-
-
-.Reg{
-  text-decoration: none;
-  color:black;
-}
-
-.Vhod{
-  text-decoration: none;
-  color:white;
-}
-
-
-.form__button2:hover > .Reg{
-  color:white;
 }
 
 .block_buttons {

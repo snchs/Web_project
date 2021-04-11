@@ -1,15 +1,11 @@
 # flask framework
 from flask import Flask, render_template, request, make_response, session, redirect, abort
 from flask_login import LoginManager, login_user, login_required, current_user, logout_user
-# email send
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-from platform import python_version
 # models
 from data import db_session
 from data.users import User
-
+#sqlite
+import sqlite3
 # forms
 from forms.register_form import RegisterForm
 from forms.login_form import LoginForm
@@ -74,43 +70,15 @@ def reqister():
             status=form.status.data
         )
 
-        email_send(User.email)
+
 
         user.set_password(form.password.data)
         db_sess.add(user)
         db_sess.commit()
 
         return redirect('/login')
+
     return render_template('register.html', title='Регистрация', form=form)
-
-
-def email_send(email_to):
-    # --- email send
-    server = 'smtp.mail.ru'
-    user = 'snchs_web1@mail.ru'
-    password = '29032004sasha'
-
-    recipients = [email_to]
-    sender = 'snchs_web1@mail.ru'
-    subject = 'VPP - Рассылка сообщений'
-    text = f'Добро пожаловать, теперь вы часть платформы VPP!!!'
-
-    msg = MIMEMultipart('alternative')
-    msg['Subject'] = subject
-    msg['From'] = 'Python script <'+sender+'>'
-    msg['To'] = recipients
-    msg['Reply-To'] = sender
-    msg['Return-Path'] = sender
-    msg['X-Mailer'] = 'Python/'+(python_version())
-
-    part_text = MIMEText(text, 'plain')
-
-    msg.attach(part_text)
-
-    mail = smtplib.SMTP_SSL(server)
-    mail.login(user, password)
-    mail.sendmail(sender, recipients, msg)
-    mail.quit()
 
 
 # login page
@@ -124,8 +92,10 @@ def login():
         db_sess = db_session.create_session()
         # user search
 
-        sotrudnik = db_sess.query(User).filter(User.email == form.email.data, User.status == 'Сотрудник').first()
-        potreb = db_sess.query(User).filter(User.email == form.email.data, User.status == 'Потребитель').first()
+        sotrudnik = db_sess.query(User).filter(User.email == form.email.data,
+                                               User.status == 'Сотрудник').first()
+        potreb = db_sess.query(User).filter(User.email == form.email.data,
+                                            User.status == 'Потребитель').first()
         # check password
         if sotrudnik and sotrudnik.check_password(form.password.data):
             login_user(sotrudnik, remember=form.remember_me.data)
@@ -133,13 +103,14 @@ def login():
             return redirect("/sotrudnik")
 
         if potreb and potreb.check_password(form.password.data):
-            login_user(potreb, remember=form.remember_me.data)
+            login_user(potreb)
             # go home
             return redirect("/potreb")
         # user error
         return render_template('login.html',
                                message="Неправильный логин или пароль",
                                form=form)
+
     # return template
     return render_template('login.html', form=form)
 
@@ -147,8 +118,14 @@ def login():
 # personal account
 @app.route('/sotrudnik', methods=['GET', 'POST'])
 def sotrudnik():
+    con = sqlite3.connect("db/data.db")
+    cur = con.cursor()
+    info_sotrudniki = cur.execute("SELECT email FROM users WHERE status='Сотрудник'").fetchall()
+    info_potreb = cur.execute("SELECT email FROM users WHERE status='Потребитель'").fetchall()
     # return template
-    return render_template('sotrudnik.html')
+    return render_template('sotrudnik.html',
+                           len_sotrudnik=len(info_sotrudniki),
+                           len_potreb=len(info_potreb))
 
 
 # personal account
@@ -167,7 +144,7 @@ def logout():
 
 def main():
     # initilize database
-    db_session.global_init("db/blogs.db")
+    db_session.global_init("db/data.db")
 
     app.run(port=8080, host='127.0.0.1', debug=True)
 

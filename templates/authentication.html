@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Аутентификация</title>
+    <link rel="stylesheet" href="../static/css/authentication.css">
+</head>
+<body>
+<form method="post" class="form">
+    <h1 class="form__title">На почту <b style="color:#4169E1;">{{email_for_authentication}}</b>
+        отправили письмо с кодом</h1>
+    <div class="form__group">
+        <input type="text" name="cod" class="form__input" placeholder=" ">
+        <div class="form__label"> Введите код </div>
+    </div>
+    <input type="submit" value="Зарегистрироваться" class="form__button1">
+    <div class="message">{{ message }}</div>
+</form>
+</body>
+</html>

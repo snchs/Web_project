@@ -9,17 +9,16 @@
     <meta content=" " name="keywords">
     <title>Личный кабинет</title>
     <link href="..\static\fonts\stylesheet.css" rel="stylesheet" type="text/css">
-    <!--    для графика-->
+    <!--для графика-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link type="text/css" rel="StyleSheet" href="https://bootstraptema.ru/plugins/2016/shieldui/style.css"/>
     <script src="https://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
     <script src="https://bootstraptema.ru/plugins/2016/shieldui/script.js"></script>
 
-
     <!--    подключение стилей-->
     <link rel="stylesheet" href="..\static\css\potreb.css">
 </head>
-<body id="main">
+<body>
 <div id="header">
     <div class="heading">
         <div class="headingContent">
@@ -37,7 +36,7 @@
 
                 <ul>
                     <li>
-                        <a href="#main">Сотрудник ЭСК</a>
+                        <a href="#header">Потребитель</a>
                     </li>
                 </ul>
             </div>
@@ -53,7 +52,7 @@
 
     <div class="title container">
         <!--<h1>Мощная энергетика - современные технологии, новые возможности!</h1>-->
-        <h1>Добро пожаловать в Личный Кабинет, Сотрудник!</h1>
+        <h1>Добро пожаловать в Личный Кабинет, Потребитель!</h1>
         <h3>VPPiramida NRG заботится о вас</h3>
     </div>
 </div>
@@ -66,12 +65,20 @@
                 <p class="button_p">Схема платформы</p>
             </button>
             <br>
-            <button class="button_1" id="btn_count_users">
-                <p class="button_p">Количество участников</p>
+            <button class="button_1">
+                <p class="button_p">Потребление</p>
             </button>
             <br>
             <button class="button_1">
-                <p class="button_p">Заявки (на установку оборудования, расчет стратегии, прогнозирование)</p>
+                <p class="button_p">Генерация/Установить ВИЭ</p>
+            </button>
+            <br>
+            <button class="button_1">
+                <p class="button_p">Баланс накопителя/Установить накопитель</p>
+            </button>
+            <br>
+            <button class="button_1">
+                <p class="button_p">Кошелек (Оптимизировать прибыль)</p>
             </button>
             <br>
             <button class="button_1" id="btn_electricity_prices">
@@ -80,11 +87,6 @@
             <!--схема-->
             <div class="scheme_vpp">
                 <img src="../static/img/scheme_vpp.png" alt="scheme_vpp" height="350px">
-            </div>
-            <!--кол-во участников-->
-            <div class="count_users">
-                <p>Сотрудников: {{len_sotrudnik}}</p>
-                <p>Потребителей: {{len_potreb}}</p>
             </div>
 
             <!--график-->
@@ -115,5 +117,10 @@
         </div>
     </div>
 </footer>
+
+<!--для плавной прокрутки-->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="..\static\js\anchor.js"></script>
+<script type="text/javascript" src="..\static\js\anchor.init.js"></script>
 </body>
 </html>

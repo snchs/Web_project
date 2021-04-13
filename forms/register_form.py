@@ -9,6 +9,6 @@ class RegisterForm(FlaskForm):
     password = PasswordField('Пароль', validators=[DataRequired()])
     password_again = PasswordField('Повторите пароль', validators=[DataRequired()])
     name = StringField('Имя пользователя', validators=[DataRequired()])
-    status = SelectField('Тип аккаунта', choices=[('Сотрудник'), ('Потребитель')])
+    status = SelectField('Тип аккаунта', choices=[('Потребитель'), ('Сотрудник')])
     submit = SubmitField('Зарегистрироваться')
 

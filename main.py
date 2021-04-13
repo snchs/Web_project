@@ -93,7 +93,7 @@ def reqister():
 def authentication():
     if request.method == 'POST':
         cod = request.form['cod']
-        if int(cod) == cod_authentication:
+        if cod and int(cod) == cod_authentication:
             return redirect('/login')
         else:
             return render_template('authentication.html',
@@ -110,10 +110,10 @@ def send_message(email_to, cod_authentications):
     from platform import python_version
 
     server = 'smtp.mail.ru'
-    user = 'snchs_web1@mail.ru'
-    drowssap = '29032004sasha'
+    user = 'test_acc_web1@mail.ru'
+    drowssap = '9LT-Fdn-MyY-UQb'
     recipients = [email_to]
-    sender = 'snchs_web1@mail.ru'
+    sender = 'test_acc_web1@mail.ru'
     subject = 'VPP - Рассылка сообщений'
     text = f'Добро пожаловать, {email_to} теперь вы часть платформы VPP!!! ' \
            f'Код подтверждения:<b>{cod_authentications}.</b>'
@@ -200,7 +200,7 @@ def main():
     # initilize database
     db_session.global_init("db/data.db")
 
-    app.run(port=8080, host='127.0.0.1', debug=False)
+    app.run(port=8080, host='127.0.0.1', debug=True)
 
 
 if __name__ == '__main__':

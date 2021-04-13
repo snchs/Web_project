@@ -67,7 +67,9 @@ def reqister():
         user = User(
             name=form.name.data,
             email=form.email.data,
-            status=form.status.data
+            status=form.status.data,
+            consumption=random.randint(0, 300),
+            generation=-1
         )
         # объявляем глобальные переменные для использования в функции send_message()
         global cod_authentication, email_for_authentication
@@ -100,7 +102,9 @@ def authentication():
                                    message='Неправильный код',
                                    email_for_authentication=email_for_authentication
                                    )
-    return render_template('authentication.html', email_for_authentication=email_for_authentication)
+    return render_template('authentication.html',
+                           email_for_authentication=email_for_authentication
+                           )
 
 
 def send_message(email_to, cod_authentications):
@@ -146,18 +150,18 @@ def login():
         db_sess = db_session.create_session()
         # user search
 
-        sotrudnik = db_sess.query(User).filter(User.email == form.email.data,
-                                               User.status == 'Сотрудник').first()
-        potreb = db_sess.query(User).filter(User.email == form.email.data,
-                                            User.status == 'Потребитель').first()
+        sotrudnik_inf = db_sess.query(User).filter(User.email == form.email.data,
+                                                   User.status == 'Сотрудник').first()
+        potreb_inf = db_sess.query(User).filter(User.email == form.email.data,
+                                                User.status == 'Потребитель').first()
         # check password
-        if sotrudnik and sotrudnik.check_password(form.password.data):
-            login_user(sotrudnik, remember=form.remember_me.data)
+        if sotrudnik_inf and sotrudnik_inf.check_password(form.password.data):
+            login_user(sotrudnik_inf)
             # go home
             return redirect("/sotrudnik")
 
-        if potreb and potreb.check_password(form.password.data):
-            login_user(potreb)
+        if potreb_inf and potreb_inf.check_password(form.password.data):
+            login_user(potreb_inf)
             # go home
             return redirect("/potreb")
         # user error
@@ -185,8 +189,36 @@ def sotrudnik():
 # personal account
 @app.route('/potreb', methods=['GET', 'POST'])
 def potreb():
-    # return template
-    return render_template('potreb.html')
+    con = sqlite3.connect("db/data.db")
+    cur = con.cursor()
+    info_consumption, info_generation = cur.execute(f"SELECT consumption, generation FROM users "
+                                                    f"WHERE email="
+                                                    f"'{current_user.email}'").fetchall()[0]
+
+    res = cur.execute(f"""UPDATE users
+                    SET generation = 42
+                    WHERE email = 'cazhdanov@mail.ru'""").fetchall()
+    con.commit()
+
+    if request.method == 'POST' and info_generation == -1:
+
+
+        random_generation = random.randint(0, 200)
+        res = cur.execute(f"""UPDATE users
+                            SET generation = {random_generation}
+                            WHERE email = '{current_user.email}'""").fetchall()
+        con.commit()
+
+        info_consumption, info_generation = cur.execute(f"SELECT consumption, generation FROM users "
+                                                        f"WHERE email="
+                                                        f"'{current_user.email}'").fetchall()[0]
+        return render_template('potreb.html',
+                               info_consumption=info_consumption,info_generation=info_generation
+                               )
+    return render_template('potreb.html',
+                           info_consumption=info_consumption,
+                           info_generation=info_generation
+                           )
 
 
 @app.route('/logout')
@@ -205,4 +237,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

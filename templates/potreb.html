@@ -65,12 +65,17 @@
                 <p class="button_p">Схема платформы</p>
             </button>
             <br>
-            <button class="button_1">
+            <button class="button_1" id="btn_info_consumption">
                 <p class="button_p">Потребление</p>
             </button>
             <br>
-            <button class="button_1">
-                <p class="button_p">Генерация/Установить ВИЭ</p>
+            <button class="button_1" id="btn_info_generation">
+                {% if info_generation == -1 %}
+                <p class="button_p">Установить ВИЭ</p>
+                {% else %}
+                <p class="button_p">Генерация</p>
+                {% endif %}
+
             </button>
             <br>
             <button class="button_1">
@@ -88,7 +93,19 @@
             <div class="scheme_vpp">
                 <img src="../static/img/scheme_vpp.png" alt="scheme_vpp" height="350px">
             </div>
-
+            <div class="info_consumption">
+                <p>Потребление: {{info_consumption}} кВт*ч</p>
+            </div>
+            <div class="info_generation">
+                <form action="" method="post">
+                    {% if info_generation == -1 %}
+                    <input type="submit" name="submit" class="submit_generation"
+                           value="Подключить ВИЭ">
+                    {% else %}
+                    <p>Генерация: {{info_generation}} кВт*ч</p>
+                    {% endif %}
+                </form>
+            </div>
             <!--график-->
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">

@@ -1,6 +1,5 @@
 import datetime
 import sqlalchemy
-# from .db_session import *
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from .db_session import SqlAlchemyBase
@@ -20,7 +19,8 @@ class User(SqlAlchemyBase, UserMixin):
                                      default=datetime.datetime.now)
     consumption = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
     generation = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
-
+    storage = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
+    wallet = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
     def set_password(self, password):
         self.hashed_password = generate_password_hash(password)
 

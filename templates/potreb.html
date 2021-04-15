@@ -59,7 +59,8 @@
 
 <div class="Panel-sotrudnika">
     <div class="container">
-        <h2 class="title-panel-sotrudnika">Панель сотрудника</h2>
+        <h2 class="title-panel-sotrudnika">Панель потребителя</h2>
+        <!--услуги для потребителя, кнопки-->
         <div class="buttons_with_content">
             <button class="button_1" id="btn_scheme_vpp">
                 <p class="button_p">Схема платформы</p>
@@ -75,27 +76,37 @@
                 {% else %}
                 <p class="button_p">Генерация</p>
                 {% endif %}
-
             </button>
             <br>
-            <button class="button_1">
-                <p class="button_p">Баланс накопителя/Установить накопитель</p>
+            <button class="button_1" id="btn_info_storage">
+                {% if info_storage == -1 %}
+                <p class="button_p">Установить накопитель</p>
+                {% else %}
+                <p class="button_p">Баланс накопителя</p>
+                {% endif %}
             </button>
             <br>
-            <button class="button_1">
-                <p class="button_p">Кошелек (Оптимизировать прибыль)</p>
+            <button class="button_1" id="btn_info_wallet">
+                {% if info_storage == -1 %}
+                <p class="button_p">Оптимизировать прибыль</p>
+                {% else %}
+                <p class="button_p">Кошелек</p>
+                {% endif %}
             </button>
             <br>
             <button class="button_1" id="btn_electricity_prices">
                 <p class="button_p">График цены электроэнергии на рынке</p>
             </button>
+            <!-------------------->
             <!--схема-->
             <div class="scheme_vpp">
                 <img src="../static/img/scheme_vpp.png" alt="scheme_vpp" height="350px">
             </div>
+            <!--потребеление-->
             <div class="info_consumption">
                 <p>Потребление: {{info_consumption}} кВт*ч</p>
             </div>
+            <!--генерация-->
             <div class="info_generation">
                 <form action="" method="post">
                     {% if info_generation == -1 %}
@@ -103,6 +114,28 @@
                            value="Подключить ВИЭ">
                     {% else %}
                     <p>Генерация: {{info_generation}} кВт*ч</p>
+                    {% endif %}
+                </form>
+            </div>
+            <!--накопление-->
+            <div class="info_storage">
+                <form action="" method="post">
+                    {% if info_storage == -1 %}
+                    <input type="submit" name="submit" class="submit_storage"
+                           value="Установить накопитель">
+                    {% else %}
+                    <p>Накопление: {{info_storage}} кВт*ч</p>
+                    {% endif %}
+                </form>
+            </div>
+            <!--прибыль потребителя-->
+            <div class="info_wallet">
+                <form action="" method="post">
+                    {% if info_wallet == -1 %}
+                    <input type="submit" name="submit" class="submit_wallet"
+                           value="Оптимизировать прибыль">
+                    {% else %}
+                    <p>Кошелек: {{info_wallet}} руб</p>
                     {% endif %}
                 </form>
             </div>
@@ -120,7 +153,6 @@
 <footer id="footer">
     <div class="Partners">
         <img src="..\static\img\logo__footerN.png" alt="" height="100px">
-        <img src="https://center-orlyonok.ru/Content/images/eaglet-logo.svg" alt="" height="110px" class="Orel">
     </div>
     <div class="blocks">
         <div class="logotext2">VPP<span class="span">iramida NRG</span></div>

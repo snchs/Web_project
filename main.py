@@ -62,14 +62,19 @@ def reqister():
             return render_template('register.html', title='Регистрация',
                                    form=form,
                                    message="Такой пользователь уже есть")
-
+        if form.status.data == 'Потребитель':
+            consumption = random.randint(200, 500)
+        else:
+            consumption = -1
         # user data
         user = User(
             name=form.name.data,
             email=form.email.data,
             status=form.status.data,
-            consumption=random.randint(0, 300),
-            generation=-1
+            consumption=consumption,
+            generation=-1,
+            storage=-1,
+            wallet=-1
         )
         # объявляем глобальные переменные для использования в функции send_message()
         global cod_authentication, email_for_authentication
@@ -183,7 +188,8 @@ def sotrudnik():
     # return template
     return render_template('sotrudnik.html',
                            len_sotrudnik=len(info_sotrudniki),
-                           len_potreb=len(info_potreb))
+                           len_potreb=len(info_potreb)
+                           )
 
 
 # personal account
@@ -191,35 +197,55 @@ def sotrudnik():
 def potreb():
     con = sqlite3.connect("db/data.db")
     cur = con.cursor()
-    info_consumption, info_generation = cur.execute(f"SELECT consumption, generation FROM users "
-                                                    f"WHERE email="
-                                                    f"'{current_user.email}'").fetchall()[0]
+    info_consumption, info_generation, \
+    info_storage, info_wallet = cur.execute(f"SELECT consumption, generation,"
+                                            f" storage, wallet FROM users "
+                                            f"WHERE email='{current_user.email}'").fetchall()[0]
 
-    res = cur.execute(f"""UPDATE users
-                    SET generation = 42
-                    WHERE email = 'cazhdanov@mail.ru'""").fetchall()
-    con.commit()
+    if request.method == 'POST' and info_storage == -1 \
+            and info_generation == -1 and info_wallet == -1:
+        info_consumption = random.randint(200, 500)
+        info_generation = random.randint(200, 500)
 
-    if request.method == 'POST' and info_generation == -1:
+        if info_consumption >= info_generation:
+            info_storage = 0
+        else:
+            info_storage = info_generation-info_consumption
+        info_wallet = 3.8*info_storage
 
-
-        random_generation = random.randint(0, 200)
-        res = cur.execute(f"""UPDATE users
-                            SET generation = {random_generation}
-                            WHERE email = '{current_user.email}'""").fetchall()
+        res = cur.execute(f"UPDATE users SET storage = {info_storage} "
+                          f"WHERE email = '{current_user.email}'").fetchall()
+        res = cur.execute(f"UPDATE users SET generation = {info_generation} "
+                          f"WHERE email = '{current_user.email}'").fetchall()
+        res = cur.execute(f"UPDATE users SET wallet = {info_wallet} "
+                          f"WHERE email = '{current_user.email}'").fetchall()
+        # добавление пользователя в бд для уведомления сотрудника
+        res = cur.execute(f"INSERT INTO message(email) VALUES('{current_user.email}')").fetchall()
         con.commit()
 
-        info_consumption, info_generation = cur.execute(f"SELECT consumption, generation FROM users "
-                                                        f"WHERE email="
-                                                        f"'{current_user.email}'").fetchall()[0]
         return render_template('potreb.html',
-                               info_consumption=info_consumption,info_generation=info_generation
+                               info_consumption=info_consumption,
+                               info_storage=info_storage,
+                               info_generation=info_generation,
+                               info_wallet=info_wallet
                                )
+
     return render_template('potreb.html',
                            info_consumption=info_consumption,
-                           info_generation=info_generation
+                           info_generation=info_generation,
+                           info_storage=info_storage,
+                           info_wallet=info_wallet
                            )
 
+
+# таблица с запросом потребителя к сотруднику ЭСК
+@app.route('/message_sotrud')
+def message_sotrud():
+    con = sqlite3.connect("db/data.db")
+    cur = con.cursor()
+    email_message = cur.execute("SELECT email FROM message").fetchall()
+    email_message = [i[0] for i in email_message]
+    return render_template('message_sotrud.html', email_message=email_message)
 
 @app.route('/logout')
 @login_required

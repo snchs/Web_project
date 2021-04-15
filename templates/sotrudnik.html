@@ -73,13 +73,15 @@
                 <p class="button_p">Количество участников</p>
             </button>
             <br>
-            <button class="button_1">
+            <a href="/message_sotrud"><button class="button_1" id="btn_message">
                 <p class="button_p">Заявки (на установку оборудования, расчет стратегии, прогнозирование)</p>
-            </button>
+            </button></a>
+
             <br>
             <button class="button_1" id="btn_electricity_prices">
                 <p class="button_p">График цены электроэнергии на рынке</p>
             </button>
+            <!-------------------->
             <!--схема-->
             <div class="scheme_vpp">
                 <img src="../static/img/scheme_vpp.png" alt="scheme_vpp" height="350px">
@@ -89,7 +91,6 @@
                 <p>Сотрудников: {{len_sotrudnik}}</p>
                 <p>Потребителей: {{len_potreb}}</p>
             </div>
-
             <!--график-->
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
@@ -104,7 +105,6 @@
 <footer id="footer">
     <div class="Partners">
         <img src="..\static\img\logo__footerN.png" alt="" height="100px">
-        <img src="https://center-orlyonok.ru/Content/images/eaglet-logo.svg" alt="" height="110px" class="Orel">
     </div>
     <div class="blocks">
         <div class="logotext2">VPP<span class="span">iramida NRG</span></div>

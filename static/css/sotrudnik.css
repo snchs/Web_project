@@ -4,6 +4,9 @@
 	list-style: none;
 	font-family:Gilroy, sans-serif;
 }
+a {
+    color:black;
+}
 
 body{
 
@@ -122,7 +125,6 @@ body{
 	margin-top: 15px;
 	margin-bottom: 15px;
 	padding: 20px 14px;
-	/*cursor: pointer;*/
 }
 
 .heading__button a{
@@ -226,8 +228,8 @@ button_1{
 	font-weight: 600;
 	border:none;
 	padding-top:10px;
-	color:black;
 }
+
 
 .button_1:hover{
 	background:silver;
@@ -325,31 +327,22 @@ button_1{
 .logotext2{
 	font-weight: bold;
 	font-size: 40px;
-/*	padding-top: 15px;*/
-	/*line-height: 60px;*/
 	text-align: center;
 	color: #99d9ea;
 }
 
 .span{
-	/*position: relative;
-	right: 3px;*/
 	font-weight: bold;
 	font-size: 18px;
-/*	padding-top: 50px;*/
-	/*line-height: 20px;*/
 	color:white;
 }
 .OOO{
-	/*position: relative;
-	top: -30px;*/
 	text-align: center;
  }
 
 .group{
 	align-items: center;
 	display: flex;
-/*	margin-left: 80%;*/
 }
 
 .group span{
@@ -364,9 +357,6 @@ button_1{
 
 .Partners{
 	display: flex;
-	/*position: relative;
-	top:55px;
-	right: 0px*/
 }
 
 .blocks{

@@ -12,12 +12,15 @@
     <table border="1" class="table table-dark table-striped">
         <tr>
             <th>email</th>
+            <th>date</th>
         </tr>
         {% for i in email_message %}
         <tr>
-            <td>{{ i }}</td>
+            <td>{{ i[0] }}</td>
+            <td>{{ i[1] }}</td>
         </tr>
         {% endfor %}
+
     </table>
 </div>
 

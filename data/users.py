@@ -5,6 +5,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from .db_session import SqlAlchemyBase
 from sqlalchemy import orm
 
+
 class User(SqlAlchemyBase, UserMixin):
     __tablename__ = 'users'
 
@@ -21,9 +22,9 @@ class User(SqlAlchemyBase, UserMixin):
     generation = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
     storage = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
     wallet = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
+
     def set_password(self, password):
         self.hashed_password = generate_password_hash(password)
 
     def check_password(self, password):
         return check_password_hash(self.hashed_password, password)
-

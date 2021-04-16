@@ -11,4 +11,3 @@ class RegisterForm(FlaskForm):
     name = StringField('Имя пользователя', validators=[DataRequired()])
     status = SelectField('Тип аккаунта', choices=[('Потребитель'), ('Сотрудник')])
     submit = SubmitField('Зарегистрироваться')
-
